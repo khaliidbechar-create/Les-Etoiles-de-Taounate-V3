@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0ea5e9">
+<meta name="description" content="Les Étoiles de Taounate — gestion complète d'école de football, hors ligne.">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./assets/favicon.png">
+<title>⭐ Les Étoiles de Taounate</title>
+<style>
+:root{--blue:#0ea5e9;--blue2:#0284c7;--blue3:#075985;--pale:#e0f2fe;--bg:#f4fbff;--card:#fff;--text:#123047;--muted:#6b8798;--line:#d7edf8;--green:#16a34a;--orange:#f97316;--red:#dc2626;--shadow:0 8px 28px rgba(2,132,199,.11)}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}
+body{padding-bottom:82px}.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);height:70px;display:flex;align-items:center;justify-content:space-between;padding:8px 14px}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:50px;height:50px;object-fit:cover;border-radius:14px}.brand b{display:block;color:var(--blue3);font-size:16px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.install{background:var(--blue);color:white;border:0;border-radius:13px;padding:11px 14px;font-weight:800}.wrap{max-width:980px;margin:auto;padding:16px}
+.view{display:none}.view.active{display:block}
+.hero{background:linear-gradient(135deg,#dff5ff,#fff);border:1px solid #c8eafa;border-radius:24px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:14px;box-shadow:var(--shadow)}.hero img{width:88px;height:88px;object-fit:cover;border-radius:20px}.eyebrow{font-size:10px;letter-spacing:1.5px;color:var(--blue2);font-weight:900}.hero h1{font-size:28px;margin:5px 0}.hero p{margin:0;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}.stat .ico{font-size:22px}.stat b{display:block;font-size:25px;margin-top:3px}.stat small{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:15px;margin-top:12px;box-shadow:var(--shadow)}.card h2{font-size:17px;margin:0}.cardhead,.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px}.sectionhead{margin-bottom:12px}.sectionhead h1{font-size:27px;margin:2px 0}.muted{color:var(--muted);line-height:1.45}
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.action{border:1px solid #cceafa;background:#f2fbff;color:var(--blue3);border-radius:14px;padding:13px;font-weight:800}.primary{border:0;background:var(--blue);color:#fff;border-radius:12px;padding:10px 13px;font-weight:800}.secondary{border:1px solid var(--line);background:#fff;color:var(--blue3);border-radius:12px;padding:10px 13px;font-weight:800}.danger{color:var(--red)!important}.success{color:var(--green)!important}
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:12px}.input,.select,.textarea{width:100%;border:1px solid #cfe7f4;background:#fff;color:var(--text);border-radius:12px;padding:11px 12px;outline:none}.input:focus,.select:focus,.textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #e0f2fe}.list{display:grid;gap:10px}.item{background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px;box-shadow:var(--shadow)}.row{display:flex;align-items:center;gap:11px}.avatar{width:46px;height:46px;border-radius:14px;background:var(--pale);color:var(--blue2);display:grid;place-items:center;font-weight:900;flex:0 0 auto}.grow{flex:1;min-width:0}.grow strong{display:block}.grow small{display:block;color:var(--muted);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.actions{display:flex;gap:5px}.icon{border:0;background:#edf8fd;border-radius:9px;padding:8px}.pill{display:inline-block;padding:5px 9px;border-radius:99px;background:var(--pale);color:var(--blue3);font-size:11px;font-weight:800}.pill.green{background:#dcfce7;color:#166534}.pill.red{background:#fee2e2;color:#991b1b}.pill.orange{background:#ffedd5;color:#9a3412}
+.bottom{position:fixed;z-index:40;bottom:0;left:0;right:0;height:76px;background:rgba(255,255,255,.97);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}.bottom button{border:0;background:none;color:#6e8998;font-weight:700;font-size:20px}.bottom button span{display:block;font-size:10px;margin-top:2px}.bottom button.active{color:var(--blue2)}
+.modal{position:fixed;z-index:100;inset:0;background:rgba(4,30,43,.5);display:flex;align-items:flex-end}.modal[hidden]{display:none!important}.modalbox{width:100%;max-height:94vh;overflow:auto;background:#fff;border-radius:24px 24px 0 0;padding:17px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.modalhead h2{margin:0;font-size:20px}.close{border:0;background:#eef9fd;border-radius:11px;padding:9px 11px}.form{display:grid;gap:10px}.form label{font-size:12px;font-weight:800;color:#456579}.form-actions{display:flex;gap:8px;margin-top:5px}.form-actions>*{flex:1}.empty{text-align:center;padding:30px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}.kpi b{display:block;font-size:22px}.kpi small{color:var(--muted)}
+.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:600px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}.table th{color:var(--muted);font-size:11px;text-transform:uppercase}
+.scoregrid{display:grid;grid-template-columns:1fr 80px;gap:8px;align-items:center}.score{padding:10px;border:1px solid var(--line);border-radius:10px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,1fr)}.grid4{grid-template-columns:repeat(4,1fr)}.modal{align-items:center}.modalbox{max-width:650px;border-radius:22px}.bottom{max-width:760px;left:50%;right:auto;transform:translateX(-50%);border-radius:18px 18px 0 0}.wrap{padding:24px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><img src="./assets/logo.jpg" alt="Logo"><div><b>LES ÉTOILES</b><small>TAOUNATE • 2026-2027</small></div></div>
+  <button id="installBtn" class="install" hidden>📲 Installer</button>
+</header>
+
+<main class="wrap">
+<section class="view active" id="v-dashboard">
+  <div class="hero"><div><span class="eyebrow">GESTION SPORTIVE</span><h1>Tableau de bord</h1><p>Gestion complète, rapide et hors ligne.</p></div><img src="./assets/logo.jpg" alt=""></div>
+  <div class="stats">
+    <div class="stat"><span class="ico">👥</span><b id="sPlayers">0</b><small>Joueurs</small></div>
+    <div class="stat"><span class="ico">🏷️</span><b id="sCats">0</b><small>Catégories</small></div>
+    <div class="stat"><span class="ico">💳</span><b id="sPaid">0</b><small>Paiements</small></div>
+    <div class="stat"><span class="ico">⚽</span><b id="sMatches">0</b><small>Matchs</small></div>
+  </div>
+  <div class="card"><div class="cardhead"><h2>Actions rapides</h2><span class="pill" id="offlineBadge">Hors ligne</span></div><div class="grid4">
+    <button class="action" onclick="UI.openPlayer()">➕ Joueur</button><button class="action" onclick="UI.openAttendance()">✅ Présence</button><button class="action" onclick="UI.openPayment()">💳 Paiement</button><button class="action" onclick="UI.openMatch()">⚽ Match</button>
+  </div></div>
+  <div class="card"><div class="cardhead"><h2>Résumé financier</h2><span class="pill orange">MAD</span></div><div class="kpis"><div class="kpi"><b id="sCollected">0</b><small>Encaissé</small></div><div class="kpi"><b id="sOutstanding">0</b><small>Restant estimé</small></div></div></div>
+  <div class="card"><h2>Dernières activités</h2><div id="recent" class="list" style="margin-top:10px"></div></div>
+</section>
+
+<section class="view" id="v-players">
+  <div class="sectionhead"><div><span class="eyebrow">GESTION</span><h1>Joueurs</h1></div><button class="primary" onclick="UI.openPlayer()">＋ Ajouter</button></div>
+  <div class="toolbar"><input class="input" id="playerSearch" placeholder="Nom, prénom, téléphone, responsable..."><select class="select" id="playerCat"><option value="">Toutes catégories</option></select></div>
+  <div id="playersList" class="list"></div>
+</section>
+
+<section class="view" id="v-attendance">
+  <div class="sectionhead"><div><span class="eyebrow">SUIVI</span><h1>Présences</h1></div><button class="primary" onclick="UI.openAttendance()">＋ Séance</button></div>
+  <div id="attendanceList" class="list"></div>
+</section>
+
+<section class="view" id="v-evaluations">
+  <div class="sectionhead"><div><span class="eyebrow">PERFORMANCE</span><h1>Évaluations</h1></div><button class="primary" onclick="UI.openEvaluation()">＋ Évaluer</button></div>
+  <div id="evaluationList" class="list"></div>
+</section>
+
+<section class="view" id="v-payments">
+  <div class="sectionhead"><div><span class="eyebrow">FINANCES</span><h1>Cotisations</h1></div><button class="primary" onclick="UI.openPayment()">＋ Paiement</button></div>
+  <div class="kpis"><div class="kpi"><b id="pCollected">0</b><small>Encaissé</small></div><div class="kpi"><b id="pCount">0</b><small>Paiements</small></div></div>
+  <div id="paymentsList" class="list" style="margin-top:12px"></div>
+</section>
+
+<section class="view" id="v-matches">
+  <div class="sectionhead"><div><span class="eyebrow">SPORT</span><h1>Matchs</h1></div><button class="primary" onclick="UI.openMatch()">＋ Match</button></div>
+  <div id="matchesList" class="list"></div>
+</section>
+
+<section class="view" id="v-more">
+  <div class="sectionhead"><div><span class="eyebrow">OUTILS</span><h1>Plus</h1></div></div>
+  <div class="grid4">
+    <button class="action" onclick="Data.backup()">💾 Sauvegarder</button>
+    <button class="action" onclick="document.getElementById('restore').click()">📥 Restaurer</button>
+    <button class="action" onclick="Data.seed()">📊 Charger Excel</button>
+    <button class="action" onclick="Data.clear()">🗑️ Réinitialiser</button>
+  </div>
+  <input id="restore" type="file" accept=".json" hidden>
+  <div class="card"><h2>Catégories</h2><div id="categoryStats" class="list" style="margin-top:10px"></div></div>
+  <div class="card"><h2>Application</h2><p class="muted">⭐ Les Étoiles de Taounate<br>Version 3.0 • Saison 2026-2027<br>Stockage local IndexedDB • PWA • Hors ligne</p></div>
+</section>
+</main>
+
+<nav class="bottom">
+  <button data-view="dashboard" class="active">⌂<span>Accueil</span></button>
+  <button data-view="players">👥<span>Joueurs</span></button>
+  <button data-view="attendance">✓<span>Présences</span></button>
+  <button data-view="payments">€<span>Cotisations</span></button>
+  <button data-view="more">☰<span>Plus</span></button>
+</nav>
+
+<div class="modal" id="modal" hidden><div class="modalbox"><div class="modalhead"><h2 id="modalTitle"></h2><button class="close" id="modalClose">✕</button></div><div id="modalBody"></div></div></div>
+<div id="toast" style="position:fixed;z-index:200;top:82px;left:50%;transform:translateX(-50%) translateY(-10px);opacity:0;transition:.2s;background:#123047;color:#fff;padding:10px 14px;border-radius:11px;pointer-events:none"></div>
+
+<script>
+"use strict";
+const STORES=["players","attendance","evaluations","payments","matches","packs","settings"];
+const DB_NAME="etoiles-taounate-v3",DB_VERSION=1;
+let db;
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const state={players:[],attendance:[],evaluations:[],payments:[],matches:[],packs:[],settings:[]};
+
+function toast(m){const t=$("#toast");t.textContent=m;t.style.opacity=1;t.style.transform="translateX(-50%) translateY(0)";clearTimeout(toast.t);toast.t=setTimeout(()=>{t.style.opacity=0;t.style.transform="translateX(-50%) translateY(-10px)"},2200)}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function uid(p){return p+"_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,7)}
+function money(v){return (Number(String(v??0).replace(",","."))||0).toLocaleString("fr-MA",{minimumFractionDigits:2,maximumFractionDigits:2})+" MAD"}
+function today(){return new Date().toISOString().slice(0,10)}
+function age(d){if(!d)return"";const x=new Date(d);if(isNaN(x))return"";const n=new Date();let a=n.getFullYear()-x.getFullYear();if(n.getMonth()<x.getMonth()||(n.getMonth()===x.getMonth()&&n.getDate()<x.getDate()))a--;return a}
+function catFromAge(a){a=Number(a);return !Number.isFinite(a)?"":a<=6?"U6":a<=7?"U7":a<=8?"U8":a<=9?"U9":a<=10?"U10":a<=11?"U11":a<=12?"U12":a<=13?"U13":a<=14?"U14":a<=15?"U15":a<=16?"U16":a<=17?"U17":a<=18?"U18":"Seniors"}
+
+async function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DB_NAME,DB_VERSION);r.onupgradeneeded=()=>{const d=r.result;STORES.forEach(s=>{if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:"id"})})};r.onsuccess=()=>{db=r.result;res(db)};r.onerror=()=>rej(r.error)})}
+function all(store){return new Promise((res,rej)=>{const r=db.transaction(store,"readonly").objectStore(store).getAll();r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function put(store,obj){return new Promise((res,rej)=>{const r=db.transaction(store,"readwrite").objectStore(store).put(obj);r.onsuccess=()=>res(obj);r.onerror=()=>rej(r.error)})}
+function del(store,id){return new Promise((res,rej)=>{const r=db.transaction(store,"readwrite").objectStore(store).delete(id);r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+function clear(store){return new Promise((res,rej)=>{const r=db.transaction(store,"readwrite").objectStore(store).clear();r.onsuccess=()=>res();r.onerror=()=>rej(r.error)})}
+
+async function reload(){for(const s of STORES)state[s]=await all(s);render()}
+function go(v){$$(".view").forEach(x=>x.classList.toggle("active",x.id==="v-"+v));$$(".bottom button").forEach(x=>x.classList.toggle("active",x.dataset.view===v));history.replaceState(null,"","#"+v);render()}
+$$(".bottom button").forEach(b=>b.onclick=()=>go(b.dataset.view));
+
+function render(){
+  const cats=[...new Set(state.players.map(p=>p.categorie).filter(Boolean))].sort();
+  $("#sPlayers").textContent=state.players.length;$("#sCats").textContent=cats.length;$("#sPaid").textContent=state.payments.length;$("#sMatches").textContent=state.matches.length;
+  const collected=state.payments.reduce((s,p)=>s+Number(p.amount||0),0)+state.players.reduce((s,p)=>s+(state.payments.some(x=>x.playerId===p.id)?0:Number(String(p.paiement||0).replace(",","."))||0),0);
+  $("#sCollected").textContent=money(collected);$("#sOutstanding").textContent=money(0);
+  $("#pCollected").textContent=money(collected);$("#pCount").textContent=state.payments.length;
+  const sel=$("#playerCat"), old=sel.value;sel.innerHTML='<option value="">Toutes catégories</option>'+cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");if(cats.includes(old))sel.value=old;
+  renderPlayers();renderAttendance();renderEvaluations();renderPayments();renderMatches();renderCategoryStats();renderRecent();
+}
+function renderPlayers(){
+  const q=($("#playerSearch")?.value||"").toLowerCase(),c=$("#playerCat")?.value||"";
+  const a=state.players.filter(p=>(`${p.prenom} ${p.nom} ${p.telephone} ${p.responsable} ${p.licence}`).toLowerCase().includes(q)&&(!c||p.categorie===c));
+  $("#playersList").innerHTML=a.length?a.map(p=>`<div class="item row"><div class="avatar">${esc((p.prenom||p.nom||"?")[0])}</div><div class="grow"><strong>${esc(p.prenom)} ${esc(p.nom)}</strong><small>${esc(p.categorie||"Sans catégorie")} • ${esc(p.age||"")} ans • ${esc(p.telephone||"")}</small></div><div class="actions"><button class="icon" onclick="UI.viewPlayer('${p.id}')">👁️</button><button class="icon" onclick="UI.openPlayer('${p.id}')">✏️</button><button class="icon danger" onclick="UI.deletePlayer('${p.id}')">🗑️</button></div></div>`).join(""):'<div class="empty">Aucun joueur trouvé.</div>';
+}
+function renderAttendance(){
+  const a=[...state.attendance].sort((x,y)=>(y.date||"").localeCompare(x.date||""));
+  $("#attendanceList").innerHTML=a.length?a.map(x=>`<div class="item"><div class="cardhead"><strong>📅 ${esc(x.date)}</strong><span class="pill">${esc(x.categorie||"Toutes")}</span></div><div class="muted" style="margin-top:5px">${esc(x.type||"Entraînement")} • Présents: ${Number(x.present||0)} • Absents: ${Number(x.absent||0)}</div><div class="actions" style="margin-top:9px"><button class="secondary" onclick="UI.editAttendance('${x.id}')">Modifier</button><button class="secondary danger" onclick="UI.deleteRecord('attendance','${x.id}')">Supprimer</button></div></div>`).join(""):'<div class="empty">Aucune séance.</div>';
+}
+function renderEvaluations(){
+  const a=[...state.evaluations].sort((x,y)=>(y.date||"").localeCompare(x.date||""));
+  $("#evaluationList").innerHTML=a.length?a.map(x=>`<div class="item"><strong>⭐ ${esc(x.playerName)}</strong><div class="muted">${esc(x.date||"")} • Moyenne <b>${esc(x.average||"—")}/10</b></div><div class="actions" style="margin-top:9px"><button class="secondary" onclick="UI.editEvaluation('${x.id}')">Modifier</button><button class="secondary danger" onclick="UI.deleteRecord('evaluations','${x.id}')">Supprimer</button></div></div>`).join(""):'<div class="empty">Aucune évaluation.</div>';
+}
+function renderPayments(){
+  const a=[...state.payments].sort((x,y)=>(y.date||"").localeCompare(x.date||""));
+  $("#paymentsList").innerHTML=a.length?a.map(x=>`<div class="item"><div class="cardhead"><strong>💳 ${esc(x.playerName||"Joueur")}</strong><span class="pill green">${money(x.amount)}</span></div><div class="muted">${esc(x.date||"")} • ${esc(x.method||"Espèces")} ${x.note?"• "+esc(x.note):""}</div><div class="actions" style="margin-top:9px"><button class="secondary" onclick="UI.editPayment('${x.id}')">Modifier</button><button class="secondary danger" onclick="UI.deleteRecord('payments','${x.id}')">Supprimer</button></div></div>`).join(""):'<div class="empty">Aucun paiement.</div>';
+}
+function renderMatches(){
+  const a=[...state.matches].sort((x,y)=>(x.date||"").localeCompare(y.date||""));
+  $("#matchesList").innerHTML=a.length?a.map(x=>`<div class="item"><div class="cardhead"><strong>⚽ ${esc(x.adversaire||"Adversaire")}</strong><span class="pill ${x.statut==="Terminé"?"green":"orange"}">${esc(x.statut||"À venir")}</span></div><div class="muted">${esc(x.date||"")} • ${esc(x.heure||"")} • ${esc(x.lieu||"")} • ${esc(x.categorie||"")}</div>${x.score?`<b style="display:block;margin-top:6px;font-size:20px">${esc(x.score)}</b>`:""}<div class="actions" style="margin-top:9px"><button class="secondary" onclick="UI.editMatch('${x.id}')">Modifier</button><button class="secondary danger" onclick="UI.deleteRecord('matches','${x.id}')">Supprimer</button></div></div>`).join(""):'<div class="empty">Aucun match.</div>';
+}
+function renderCategoryStats(){const counts={};state.players.forEach(p=>counts[p.categorie||"Sans catégorie"]=(counts[p.categorie||"Sans catégorie"]||0)+1);$("#categoryStats").innerHTML=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<div class="item row"><div class="grow"><strong>${esc(c)}</strong><small>${n} joueur(s)</small></div><span class="pill">${n}</span></div>`).join("")||'<div class="empty">Aucune donnée.</div>'}
+function renderRecent(){const arr=[...state.payments.map(x=>({d:x.date,t:"Paiement",s:x.playerName})),...state.matches.map(x=>({d:x.date,t:"Match",s:x.adversaire})),...state.attendance.map(x=>({d:x.date,t:"Présence",s:x.categorie}))].sort((a,b)=>(b.d||"").localeCompare(a.d||"")).slice(0,5);$("#recent").innerHTML=arr.length?arr.map(x=>`<div class="item row"><div class="avatar">•</div><div class="grow"><strong>${esc(x.t)}</strong><small>${esc(x.d)} • ${esc(x.s||"")}</small></div></div>`).join(""):'<div class="empty">Aucune activité récente.</div>'}
+
+function modal(title,body){$("#modalTitle").textContent=title;$("#modalBody").innerHTML=body;$("#modal").hidden=false}
+function closeModal(){$("#modal").hidden=true}
+$("#modalClose").onclick=closeModal;$("#modal").onclick=e=>{if(e.target.id==="modal")closeModal()};
+
+const UI={
+ async openPlayer(id){
+   const p=id?state.players.find(x=>x.id===id):{};
+   modal(p.id?"Modifier le joueur":"Ajouter un joueur",`<form id="playerForm" class="form">
+   <label>Prénom<input class="input" name="prenom" required value="${esc(p.prenom)}"></label>
+   <label>Nom<input class="input" name="nom" required value="${esc(p.nom)}"></label>
+   <label>Date de naissance<input class="input" name="dateNaissance" type="date" value="${esc(p.dateNaissance)}"></label>
+   <label>Sexe<select class="select" name="sexe"><option value="">—</option><option value="M" ${p.sexe==="M"?"selected":""}>Masculin</option><option value="F" ${p.sexe==="F"?"selected":""}>Féminin</option></select></label>
+   <label>Catégorie<input class="input" name="categorie" value="${esc(p.categorie)}" placeholder="Automatique si vide"></label>
+   <label>Numéro de licence<input class="input" name="licence" value="${esc(p.licence)}"></label>
+   <label>Responsable<input class="input" name="responsable" value="${esc(p.responsable)}"></label>
+   <label>Téléphone<input class="input" name="telephone" inputmode="tel" value="${esc(p.telephone)}"></label>
+   <label>Montant déjà payé (MAD)<input class="input" name="paiement" inputmode="decimal" value="${esc(p.paiement)}"></label>
+   <label>Pack<select class="select" name="pack"><option value="">Aucun</option><option value="Oui" ${p.pack==="Oui"?"selected":""}>Oui</option></select></label>
+   <label>Taille du pack<input class="input" name="taillePack" value="${esc(p.taillePack)}" placeholder="XS, S, M, L, XL"></label>
+   <label>Adresse<textarea class="textarea" name="adresse" rows="2">${esc(p.adresse)}</textarea></label>
+   <label>Observations<textarea class="textarea" name="observations" rows="3">${esc(p.observations)}</textarea></label>
+   <div class="form-actions"><button type="button" class="secondary" onclick="UI.close()">Annuler</button><button class="primary">Enregistrer</button></div></form>`);
+   $("#playerForm").onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const a=age(d.dateNaissance);const obj={...(p||{}),id:p.id||uid("p"),...d,age:a,categorie:d.categorie||catFromAge(a),dateInscription:p.dateInscription||today()};await put("players",obj);closeModal();toast("Joueur enregistré ✓");reload()};
+ },
+ async deletePlayer(id){if(confirm("Supprimer définitivement ce joueur ?")){await del("players",id);toast("Joueur supprimé");reload()}},
+ viewPlayer(id){const p=state.players.find(x=>x.id===id);if(!p)return;const pays=state.payments.filter(x=>x.playerId===id),att=state.attendance.reduce((s,x)=>s+(x.records?.[id]==="Présent"?1:0),0),ev=state.evaluations.filter(x=>x.playerId===id);modal(`Fiche — ${p.prenom} ${p.nom}`,`<div class="card" style="margin-top:0"><div class="row"><div class="avatar" style="width:62px;height:62px;font-size:22px">${esc((p.prenom||"?")[0])}</div><div class="grow"><h2 style="margin:0">${esc(p.prenom)} ${esc(p.nom)}</h2><div class="muted">${esc(p.categorie||"")} • ${esc(p.age||"")} ans • ${esc(p.telephone||"")}</div></div></div></div><div class="kpis" style="margin-top:10px"><div class="kpi"><b>${att}</b><small>Présences</small></div><div class="kpi"><b>${pays.length}</b><small>Paiements</small></div></div><div class="card"><h2>Informations</h2><p class="muted">Responsable : ${esc(p.responsable||"—")}<br>Licence : ${esc(p.licence||"—")}<br>Pack : ${esc(p.pack||"—")} ${p.taillePack?"• "+esc(p.taillePack):""}<br>Payé : ${esc(p.paiement||"0")} MAD</p></div><button class="primary" style="width:100%" onclick="UI.openPlayer('${p.id}')">✏️ Modifier la fiche</button>`)},
+ close(){closeModal()},
+ async openAttendance(id){
+   const x=id?state.attendance.find(a=>a.id===id):{};
+   const date=x.date||today();
+   const cat=x.categorie||"";
+   const players=state.players.filter(p=>!cat||p.categorie===cat);
+   const rec=x.records||{};
+   modal(id?"Modifier une séance":"Nouvelle séance",`<form id="attForm" class="form"><label>Date<input class="input" name="date" type="date" value="${date}" required></label><label>Catégorie<select class="select" name="categorie"><option value="">Toutes</option>${[...new Set(state.players.map(p=>p.categorie).filter(Boolean))].sort().map(c=>`<option ${cat===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label><label>Type<select class="select" name="type"><option ${x.type==="Entraînement"||!x.type?"selected":""}>Entraînement</option><option ${x.type==="Match"?"selected":""}>Match</option><option ${x.type==="Test"?"selected":""}>Test</option></select></label><div id="attPlayers">${players.map(p=>`<div class="item row"><div class="grow"><strong>${esc(p.prenom)} ${esc(p.nom)}</strong><small>${esc(p.categorie||"")}</small></div><select class="select attstatus" data-id="${p.id}" style="width:130px"><option ${rec[p.id]==="Présent"?"selected":""}>Présent</option><option ${rec[p.id]==="Absent"?"selected":""}>Absent</option><option ${rec[p.id]==="Retard"?"selected":""}>Retard</option><option ${rec[p.id]==="Excusé"?"selected":""}>Excusé</option></select></div>`).join("")||'<div class="empty">Aucun joueur dans cette catégorie.</div>'}</div><div class="form-actions"><button type="button" class="secondary" onclick="UI.close()">Annuler</button><button class="primary">Enregistrer</button></div></form>`);
+   const catSel=$('#attForm [name="categorie"]');catSel.onchange=()=>{closeModal();UI.openAttendance(id)};
+   $("#attForm").onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target),d=Object.fromEntries(f);const records={};$$(".attstatus").forEach(s=>records[s.dataset.id]=s.value);const present=Object.values(records).filter(v=>v==="Présent").length;const absent=Object.values(records).filter(v=>v==="Absent").length;await put("attendance",{...(x||{}),id:x.id||uid("att"),date:d.date,categorie:d.categorie,type:d.type,records,present,absent});closeModal();toast("Présences enregistrées ✓");reload()};
+ },
+ editAttendance(id){this.openAttendance(id)},
+ async openEvaluation(id){
+   const x=id?state.evaluations.find(e=>e.id===id):{};const p=state.players.find(p=>p.id===x.playerId)||state.players[0];if(!p){toast("Ajoutez d'abord un joueur");return}
+   const scores=x.scores||{};const skills=["Technique","Passe","Dribble","Tir","Vitesse","Endurance","Défense","Esprit d'équipe","Discipline","Progression"];
+   modal(id?"Modifier une évaluation":"Nouvelle évaluation",`<form id="evalForm" class="form"><label>Joueur<select class="select" name="playerId">${state.players.map(q=>`<option value="${q.id}" ${q.id===p.id?"selected":""}>${esc(q.prenom)} ${esc(q.nom)} — ${esc(q.categorie||"")}</option>`).join("")}</select></label><label>Date<input class="input" name="date" type="date" value="${x.date||today()}"></label><div class="scoregrid">${skills.map(s=>`<label>${s}<input class="score" name="s_${s}" type="number" min="1" max="10" step="1" value="${esc(scores[s]||"")}"></label>`).join("")}</div><label>Commentaire<textarea class="textarea" name="commentaire" rows="3">${esc(x.commentaire)}</textarea></label><div class="form-actions"><button type="button" class="secondary" onclick="UI.close()">Annuler</button><button class="primary">Enregistrer</button></div></form>`);
+   $("#evalForm").onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const scores={};skills.forEach(s=>scores[s]=Number(d["s_"+s]||0));const vals=Object.values(scores).filter(v=>v>0);const avg=vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1):"—";const pp=state.players.find(q=>q.id===d.playerId);await put("evaluations",{...(x||{}),id:x.id||uid("ev"),playerId:d.playerId,playerName:`${pp.prenom} ${pp.nom}`,date:d.date,scores,average:avg,commentaire:d.commentaire});closeModal();toast("Évaluation enregistrée ✓");reload()}
+ },
+ editEvaluation(id){this.openEvaluation(id)},
+ async openPayment(id){
+   const x=id?state.payments.find(p=>p.id===id):{};modal(id?"Modifier un paiement":"Nouveau paiement",`<form id="payForm" class="form"><label>Joueur<select class="select" name="playerId">${state.players.map(p=>`<option value="${p.id}" ${p.id===x.playerId?"selected":""}>${esc(p.prenom)} ${esc(p.nom)}</option>`).join("")}</select></label><label>Montant (MAD)<input class="input" name="amount" type="number" min="0" step="0.01" required value="${esc(x.amount||"")}"></label><label>Date<input class="input" name="date" type="date" value="${x.date||today()}"></label><label>Mode<select class="select" name="method"><option ${x.method==="Espèces"||!x.method?"selected":""}>Espèces</option><option ${x.method==="Virement"?"selected":""}>Virement</option><option ${x.method==="Autre"?"selected":""}>Autre</option></select></label><label>Note<textarea class="textarea" name="note">${esc(x.note)}</textarea></label><div class="form-actions"><button type="button" class="secondary" onclick="UI.close()">Annuler</button><button class="primary">Enregistrer</button></div></form>`);
+   $("#payForm").onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));const p=state.players.find(q=>q.id===d.playerId);await put("payments",{...(x||{}),id:x.id||uid("pay"),...d,amount:Number(d.amount),playerName:`${p.prenom} ${p.nom}`});closeModal();toast("Paiement enregistré ✓");reload()}
+ },
+ editPayment(id){this.openPayment(id)},
+ async openMatch(id){
+   const x=id?state.matches.find(m=>m.id===id):{};modal(id?"Modifier le match":"Nouveau match",`<form id="matchForm" class="form"><label>Date<input class="input" name="date" type="date" value="${x.date||today()}"></label><label>Heure<input class="input" name="heure" type="time" value="${x.heure||""}"></label><label>Catégorie<select class="select" name="categorie"><option value="">—</option>${[...new Set(state.players.map(p=>p.categorie).filter(Boolean))].sort().map(c=>`<option ${x.categorie===c?"selected":""}>${esc(c)}</option>`).join("")}</select></label><label>Adversaire<input class="input" name="adversaire" value="${esc(x.adversaire)}" required></label><label>Lieu<input class="input" name="lieu" value="${esc(x.lieu)}"></label><label>Statut<select class="select" name="statut"><option ${x.statut==="À venir"||!x.statut?"selected":""}>À venir</option><option ${x.statut==="Terminé"?"selected":""}>Terminé</option><option ${x.statut==="Annulé"?"selected":""}>Annulé</option></select></label><label>Score<input class="input" name="score" placeholder="Ex. 3 - 1" value="${esc(x.score)}"></label><label>Observations<textarea class="textarea" name="observations">${esc(x.observations)}</textarea></label><div class="form-actions"><button type="button" class="secondary" onclick="UI.close()">Annuler</button><button class="primary">Enregistrer</button></div></form>`);
+   $("#matchForm").onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.target));await put("matches",{...(x||{}),id:x.id||uid("match"),...d});closeModal();toast("Match enregistré ✓");reload()}
+ },
+ editMatch(id){this.openMatch(id)},
+ async deleteRecord(store,id){if(confirm("Supprimer cet élément ?")){await del(store,id);toast("Supprimé");reload()}}
+};
+
+const Data={
+ async seed(){if(!confirm("Charger les 128 joueurs du fichier Excel initial ? Les joueurs existants seront conservés."))return;const r=await fetch("./data/seed.json");const d=await r.json();for(const p of d.players)await put("players",p);toast(`${d.players.length} joueurs chargés ✓`);reload()},
+ async backup(){const out={version:3,exportedAt:new Date().toISOString()};for(const s of STORES)out[s]=await all(s);const b=new Blob([JSON.stringify(out,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="les-etoiles-taounate-v3-sauvegarde.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("Sauvegarde exportée ✓")},
+ async restore(file){try{const d=JSON.parse(await file.text());for(const s of STORES)if(Array.isArray(d[s]))for(const x of d[s])await put(s,x);toast("Sauvegarde restaurée ✓");reload()}catch(e){alert("Fichier de sauvegarde invalide.")}},
+ async clear(){if(!confirm("Supprimer toutes les données locales ? Cette action est irréversible."))return;for(const s of STORES)await clear(s);toast("Données supprimées");reload()}
+};
+$("#restore").onchange=e=>{if(e.target.files[0])Data.restore(e.target.files[0]);e.target.value=""};
+$("#playerSearch").oninput=renderPlayers;$("#playerCat").onchange=renderPlayers;
+window.addEventListener("online",()=>$("#offlineBadge").textContent="Connexion disponible");
+window.addEventListener("offline",()=>$("#offlineBadge").textContent="Mode hors ligne");
+
+let deferred=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#installBtn").hidden=false});
+$("#installBtn").onclick=async()=>{if(!deferred){toast("Chrome : menu ⋮ → Ajouter à l'écran d'accueil");return}deferred.prompt();const r=await deferred.userChoice;if(r.outcome==="accepted")toast("Installation lancée ✓");deferred=null};
+window.addEventListener("appinstalled",()=>{$("#installBtn").hidden=true;toast("Application installée ✓")});
+
+window.addEventListener("error",e=>console.error("V3:",e.error||e.message));
+(async()=>{try{await openDB();await reload();const h=location.hash.slice(1);if(h&&["dashboard","players","attendance","evaluations","payments","matches","more"].includes(h))go(h);if(!state.players.length)toast("Base prête — utilisez « Charger Excel »");}catch(e){console.error(e);alert("Impossible d'initialiser la base locale. Vérifiez que le site est ouvert en HTTPS.");}})();
+</script>
+<script>
+if("serviceWorker" in navigator){navigator.serviceWorker.register("./service-worker.js").catch(e=>console.error("SW",e))}
+</script>
+</body>
+</html>
